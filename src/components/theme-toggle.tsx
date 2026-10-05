@@ -1,0 +1,25 @@
+"use client";
+
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import { Button } from "@/components/ui/button";
+
+/**
+ * Switches between light and dark mode. Both icons are rendered and swapped
+ * with CSS, so the button looks right before the page knows the theme.
+ */
+export function ThemeToggle() {
+  const { resolvedTheme, setTheme } = useTheme();
+
+  return (
+    <Button
+      variant="ghost"
+      size="icon"
+      aria-label="Toggle dark mode"
+      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+    >
+      <Sun className="size-4 dark:hidden" aria-hidden />
+      <Moon className="hidden size-4 dark:block" aria-hidden />
+    </Button>
+  );
+}
