@@ -1,6 +1,6 @@
 {
   "name": "nextjs-saas-landing-kit",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "private": true,
   "description": "AI SaaS Launch Kit for Next.js 16: 32 sections including 3D, a live AI demo, typed API with dummy data, blog, pricing, waitlist and auth pages. Tailwind CSS, shadcn/ui, React Three Fiber.",
   "license": "SEE LICENSE IN LICENSE",
@@ -61,5 +61,17 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   },
-  "marketplace": {}
+  "marketplace": {
+    "icon": "marketplace/icon.png",
+    "screenshots": [
+      "marketplace/01-hero.jpg",
+      "marketplace/02-3d-dive.jpg",
+      "marketplace/03-stacking-layers.jpg",
+      "marketplace/04-3d-chart.jpg",
+      "marketplace/05-3d-globe.jpg",
+      "marketplace/06-product-tour.jpg",
+      "marketplace/08-pricing.jpg",
+      "marketplace/10-mobile-hero.jpg"
+    ]
+  }
 }
