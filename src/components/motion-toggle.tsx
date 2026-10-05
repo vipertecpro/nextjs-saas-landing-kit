@@ -3,36 +3,37 @@
 import { Pause, Play } from "lucide-react";
 import { useEffect } from "react";
 import { buttonVariants } from "@/components/ui/button";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { useStoredValue } from "@/lib/use-stored-value";
 import { cn } from "@/lib/utils";
 
 /**
- * Lets visitors pause every animation on the site, including the 3D. The
- * choice is remembered, and it is on top of the system setting for reduced
- * motion, which is always respected.
+ * Pauses or plays every animation on the site, including the 3D. Without a
+ * choice, the visitor's device setting for reduced motion decides; the
+ * choice made here wins over it and is remembered.
  */
 export function MotionToggle() {
   const [motion, setMotion] = useStoredValue("motion");
-  const off = motion === "off";
+  const paused = useReducedMotion();
 
   useEffect(() => {
-    if (off) {
-      document.documentElement.dataset.motion = "off";
+    if (motion === "on" || motion === "off") {
+      document.documentElement.dataset.motion = motion;
     } else {
       delete document.documentElement.dataset.motion;
     }
-  }, [off]);
+  }, [motion]);
 
   return (
     <button
       type="button"
-      onClick={() => setMotion(off ? null : "off")}
-      aria-pressed={off}
-      aria-label={off ? "Turn animations on" : "Pause animations"}
-      title={off ? "Turn animations on" : "Pause animations"}
+      onClick={() => setMotion(paused ? "on" : "off")}
+      aria-pressed={paused}
+      aria-label={paused ? "Play animations" : "Pause animations"}
+      title={paused ? "Play animations" : "Pause animations"}
       className={cn(buttonVariants({ variant: "ghost", size: "icon" }))}
     >
-      {off ? <Play className="size-4" aria-hidden /> : <Pause className="size-4" aria-hidden />}
+      {paused ? <Play className="size-4" aria-hidden /> : <Pause className="size-4" aria-hidden />}
     </button>
   );
 }

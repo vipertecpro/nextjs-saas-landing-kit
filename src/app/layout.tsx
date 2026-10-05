@@ -4,6 +4,7 @@ import { AnnouncementBar } from "@/components/sections/announcement-bar";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { MotionProvider } from "@/components/motion/motion-provider";
+import { MotionNotice } from "@/components/motion-notice";
 import { ThemePicker } from "@/components/theme-picker";
 import { ThemeProvider } from "@/components/theme-provider";
 import { site } from "@/config/site";
@@ -46,7 +47,12 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
             {children}
           </main>
           <SiteFooter />
-          {process.env.NEXT_PUBLIC_DEMO_MODE === "true" && <ThemePicker />}
+          {process.env.NEXT_PUBLIC_DEMO_MODE === "true" && (
+            <>
+              <ThemePicker />
+              <MotionNotice />
+            </>
+          )}
           </MotionProvider>
         </ThemeProvider>
       </body>

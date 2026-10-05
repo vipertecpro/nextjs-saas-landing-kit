@@ -3,10 +3,13 @@
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
-/* "Reduced motion" also covers visitors who switch motion off in the header. */
+/* Still when the visitor's system asks for reduced motion (unless they chose
+   to play animations with the header switch), or when they paused them. */
 @custom-variant motion-reduce {
   @media (prefers-reduced-motion: reduce) {
-    @slot;
+    &:where(:root:not([data-motion="on"]) *) {
+      @slot;
+    }
   }
   &:where([data-motion="off"] *) {
     @slot;
@@ -186,7 +189,7 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
+  html:not([data-motion="on"]) {
     scroll-behavior: auto;
   }
 }
@@ -350,15 +353,15 @@ html {
   to { transform: rotate(360deg); }
 }
 
+/* Pseudo-elements can't go inside :is(), so ::before is listed on its own. */
 @media (prefers-reduced-motion: reduce) {
-  .aurora,
-  .beam-border::before,
-  .marquee,
-  .blinking-caret {
+  :root:not([data-motion="on"]) :is(.aurora, .marquee, .blinking-caret),
+  :root:not([data-motion="on"]) .beam-border::before {
     animation: none;
   }
 }
-[data-motion="off"] :is(.aurora, .beam-border::before, .marquee, .blinking-caret, .scroll-progress) {
+[data-motion="off"] :is(.aurora, .marquee, .blinking-caret, .scroll-progress),
+[data-motion="off"] .beam-border::before {
   animation: none;
 }
 

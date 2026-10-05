@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.0.2] - 2026-10-05
+
+- The motion switch in the header can now play animations on devices set to reduce motion, as well as pause them; the choice is remembered.
+- Pausing animations now also stops the aurora, marquees and glowing borders.
+- The live demo explains why animations are paused on devices set to reduce motion, with a button to play them.
+
 ## [2.0.1] - 2026-10-05
 
 - The "Most popular" badge on the highlighted pricing plan is no longer cut off.
