@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Cta } from "@/components/sections/cta";
-import { Faq } from "@/components/sections/faq";
+import { SectionBlock } from "@/components/section-block";
 import { Pricing } from "@/components/sections/pricing";
+import { getSection } from "@/lib/api";
 
 export const metadata: Metadata = {
   title: "Pricing",
@@ -9,12 +9,14 @@ export const metadata: Metadata = {
   alternates: { canonical: "/pricing" },
 };
 
-export default function PricingPage() {
+export default async function PricingPage() {
+  const pricing = await getSection("pricing");
+
   return (
     <>
-      <Pricing asPageHeading />
-      <Faq />
-      <Cta />
+      <Pricing content={pricing} asPageHeading />
+      <SectionBlock id="faq" />
+      <SectionBlock id="cta" />
     </>
   );
 }

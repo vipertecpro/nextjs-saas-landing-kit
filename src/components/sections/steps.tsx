@@ -1,20 +1,24 @@
+import { Reveal } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/section-heading";
-import { steps } from "@/content/landing";
+import type { StepsContent } from "@/data/types";
 
-export function Steps() {
+export function Steps({ content: steps }: { content: StepsContent }) {
   return (
     <section className="py-24">
-      <div className="container-page flex flex-col gap-12">
-        <SectionHeading eyebrow="How it works" title={steps.title} />
-        <ol className="grid gap-6 md:grid-cols-3">
+      <div className="container-page flex flex-col gap-14">
+        <Reveal>
+          <SectionHeading eyebrow={steps.eyebrow} title={steps.title} highlight={steps.highlight} subtitle={steps.subtitle} />
+        </Reveal>
+        <ol className="relative grid gap-6 md:grid-cols-3">
+          <div aria-hidden className="absolute top-5 right-[16%] left-[16%] hidden h-px bg-linear-to-r from-transparent via-primary/50 to-transparent md:block" />
           {steps.items.map((step, index) => (
-            <li key={step.title} className="relative flex flex-col gap-3 rounded-2xl border bg-card p-6">
-              <span className="grid size-9 place-items-center rounded-full bg-primary font-semibold text-primary-foreground" aria-hidden>
+            <Reveal as="li" key={step.title} delay={index * 0.12} className="relative flex flex-col items-center gap-3 text-center">
+              <span className="relative z-10 grid size-10 place-items-center rounded-full bg-primary font-semibold text-primary-foreground shadow-lg shadow-primary/30" aria-hidden>
                 {index + 1}
               </span>
-              <h3 className="font-semibold">{step.title}</h3>
-              <p className="text-sm text-muted-foreground">{step.description}</p>
-            </li>
+              <h3 className="text-lg font-semibold">{step.title}</h3>
+              <p className="max-w-xs text-sm text-muted-foreground">{step.description}</p>
+            </Reveal>
           ))}
         </ol>
       </div>

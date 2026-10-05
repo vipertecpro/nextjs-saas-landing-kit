@@ -3,6 +3,15 @@
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
+/* "Reduced motion" also covers visitors who switch motion off in the header. */
+@custom-variant motion-reduce {
+  @media (prefers-reduced-motion: reduce) {
+    @slot;
+  }
+  &:where([data-motion="off"] *) {
+    @slot;
+  }
+}
 
 @theme inline {
   --color-background: var(--background);
@@ -48,7 +57,6 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-/* Your brand colour is --primary (light and dark). Change these two to rebrand. */
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -85,22 +93,22 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: oklch(0.13 0.008 285);
   --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
+  --card: oklch(0.17 0.01 285);
   --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
+  --popover: oklch(0.17 0.01 285);
   --popover-foreground: oklch(0.985 0 0);
   --primary: oklch(0.68 0.17 268);
   --primary-foreground: oklch(0.18 0.03 268);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
+  --muted: oklch(0.22 0.012 285);
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
+  --border: oklch(1 0 0 / 9%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.68 0.17 268);
   --chart-1: oklch(0.87 0 0);
@@ -180,5 +188,208 @@ html {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+}
+
+/*
+ * Colour themes. Pick one in src/config/site.ts (theme: "aurora" | "ocean" |
+ * "ember"); it sets data-theme on <html>. Each theme sets the brand colour
+ * and the two accent colours used by the artwork and gradients, for light
+ * and dark mode. Add your own by copying a block.
+ */
+:root,
+[data-theme="aurora"] {
+  --primary: oklch(0.55 0.23 285);
+  --primary-foreground: oklch(0.985 0 0);
+  --ring: oklch(0.55 0.23 285);
+  --accent-1: oklch(0.62 0.24 290);
+  --accent-2: oklch(0.72 0.17 220);
+}
+.dark,
+.dark [data-theme="aurora"],
+[data-theme="aurora"].dark {
+  --primary: oklch(0.72 0.18 288);
+  --primary-foreground: oklch(0.17 0.03 285);
+  --ring: oklch(0.72 0.18 288);
+  --accent-1: oklch(0.68 0.22 295);
+  --accent-2: oklch(0.78 0.14 215);
+}
+[data-theme="ocean"] {
+  --primary: oklch(0.56 0.15 230);
+  --ring: oklch(0.56 0.15 230);
+  --accent-1: oklch(0.65 0.15 210);
+  --accent-2: oklch(0.75 0.15 170);
+}
+[data-theme="ocean"].dark {
+  --primary: oklch(0.76 0.13 220);
+  --primary-foreground: oklch(0.18 0.03 230);
+  --ring: oklch(0.76 0.13 220);
+  --accent-1: oklch(0.72 0.14 215);
+  --accent-2: oklch(0.8 0.14 170);
+}
+[data-theme="ember"] {
+  --primary: oklch(0.6 0.2 35);
+  --ring: oklch(0.6 0.2 35);
+  --accent-1: oklch(0.66 0.21 30);
+  --accent-2: oklch(0.8 0.15 75);
+}
+[data-theme="ember"].dark {
+  --primary: oklch(0.74 0.17 45);
+  --primary-foreground: oklch(0.2 0.04 40);
+  --ring: oklch(0.74 0.17 45);
+  --accent-1: oklch(0.7 0.19 35);
+  --accent-2: oklch(0.84 0.14 80);
+}
+
+@layer components {
+  /* Text filled with the theme's gradient. */
+  .text-gradient {
+    background: linear-gradient(100deg, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Slowly drifting colour clouds behind the hero. */
+  .aurora {
+    position: absolute;
+    inset: -20% -10% auto;
+    height: 120%;
+    filter: blur(70px);
+    opacity: 0.55;
+    background:
+      radial-gradient(40% 35% at 30% 30%, color-mix(in oklch, var(--accent-1) 70%, transparent), transparent 70%),
+      radial-gradient(35% 30% at 70% 25%, color-mix(in oklch, var(--accent-2) 60%, transparent), transparent 70%),
+      radial-gradient(30% 30% at 50% 60%, color-mix(in oklch, var(--primary) 45%, transparent), transparent 70%);
+    animation: aurora-drift 18s ease-in-out infinite alternate;
+  }
+
+  /* A light that runs around the border of an element. Wrap the element in
+     .beam-border and give it its own background. */
+  .beam-border {
+    position: relative;
+    isolation: isolate;
+    border-radius: inherit;
+    padding: 1px;
+    background: color-mix(in oklch, var(--border) 80%, transparent);
+    overflow: hidden;
+  }
+  .beam-border::before {
+    content: "";
+    position: absolute;
+    inset: -150%;
+    z-index: -1;
+    background: conic-gradient(from 0deg, transparent 0deg 300deg, var(--accent-2) 330deg, var(--accent-1) 350deg, transparent 360deg);
+    animation: beam-spin 6s linear infinite;
+  }
+
+  /* An endless horizontal strip; the content is rendered twice. */
+  .marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee var(--marquee-duration, 30s) linear infinite;
+  }
+  .marquee-reverse {
+    animation-direction: reverse;
+  }
+  .marquee-mask {
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+  .marquee-mask:hover .marquee {
+    animation-play-state: paused;
+  }
+
+  /* A glow that follows the pointer; set by the Spotlight component. */
+  .spotlight {
+    background: radial-gradient(
+      420px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+      color-mix(in oklch, var(--primary) 14%, transparent),
+      transparent 60%
+    );
+  }
+
+  .blinking-caret {
+    display: inline-block;
+    width: 2px;
+    height: 1.1em;
+    margin-inline-start: 2px;
+    vertical-align: text-bottom;
+    background: var(--primary);
+    animation: blink 1s steps(2) infinite;
+  }
+}
+
+@keyframes aurora-drift {
+  0% { transform: translate3d(-4%, 0, 0) scale(1); }
+  50% { transform: translate3d(4%, 3%, 0) scale(1.08); }
+  100% { transform: translate3d(-2%, -2%, 0) scale(1.03); }
+}
+@keyframes beam-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+@keyframes blink {
+  to { visibility: hidden; }
+}
+@keyframes flow {
+  from { stroke-dashoffset: 100; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+/* Each ring is turned to its own angle (--turn), tipped over, and spun, like an atom. */
+@keyframes core-ring {
+  from { transform: rotateZ(var(--turn)) rotateX(72deg) rotateZ(0deg); }
+  to { transform: rotateZ(var(--turn)) rotateX(72deg) rotateZ(360deg); }
+}
+@keyframes orbit {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora,
+  .beam-border::before,
+  .marquee,
+  .blinking-caret {
+    animation: none;
+  }
+}
+[data-motion="off"] :is(.aurora, .beam-border::before, .marquee, .blinking-caret, .scroll-progress) {
+  animation: none;
+}
+
+@layer components {
+  /* Section numbers ("01 / Features") count themselves in page order. */
+  main {
+    counter-reset: section;
+  }
+  .section-eyebrow::before {
+    counter-increment: section;
+    content: counter(section, decimal-leading-zero) " / ";
+    opacity: 0.6;
+  }
+
+  /* Huge outlined words, used as a backdrop. */
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1px color-mix(in oklch, var(--foreground) 14%, transparent);
+  }
+
+  /* A line across the top of the window that fills as the page scrolls.
+     Pure CSS; browsers without scroll-driven animations simply hide it. */
+  .scroll-progress {
+    display: none;
+  }
+  @supports (animation-timeline: scroll()) {
+    .scroll-progress {
+      display: block;
+      transform-origin: left;
+      animation: progress linear both;
+      animation-timeline: scroll(root);
+    }
   }
 }

@@ -1,17 +1,20 @@
-import { logos } from "@/content/landing";
+import type { CSSProperties } from "react";
+import type { LogosContent } from "@/data/types";
 
 /**
- * Customer names as a trust strip. Replace them with logo SVGs when you have
- * permission to show them.
+ * Customer names scrolling past. Replace them with logo SVGs when you have
+ * permission to show them. The list is rendered twice for a seamless loop.
  */
-export function LogoCloud() {
+export function LogoCloud({ content }: { content: LogosContent }) {
+  const logos = content.names;
+
   return (
-    <section aria-label="Trusted by" className="border-y border-border/60 py-10">
-      <div className="container-page flex flex-col items-center gap-6">
-        <p className="text-sm text-muted-foreground">Trusted by fast-moving teams at</p>
-        <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-          {logos.map((logo) => (
-            <li key={logo} className="text-xl font-semibold tracking-tight text-muted-foreground/70">
+    <section aria-label="Trusted by" className="py-12">
+      <p className="mb-8 text-center text-sm text-muted-foreground">{content.caption}</p>
+      <div className="marquee-mask overflow-hidden">
+        <ul className="marquee gap-14 pe-14" style={{ "--marquee-duration": "35s" } as CSSProperties}>
+          {[...logos, ...logos].map((logo, index) => (
+            <li key={index} aria-hidden={index >= logos.length} className="shrink-0 text-2xl font-semibold tracking-tight text-muted-foreground/60">
               {logo}
             </li>
           ))}

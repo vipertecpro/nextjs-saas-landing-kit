@@ -4,6 +4,7 @@ import { Menu } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { Logo } from "@/components/logo";
+import { MotionToggle } from "@/components/motion-toggle";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { buttonVariants } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -19,6 +20,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <span aria-hidden className="scroll-progress absolute inset-x-0 -bottom-px h-0.5 bg-linear-to-r from-(--accent-1) to-(--accent-2)" />
       <div className="container-page flex h-16 items-center justify-between gap-4">
         <Logo />
 
@@ -35,6 +37,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-1">
+          <MotionToggle />
           <ThemeToggle />
           <Link href="/login" className={cn(buttonVariants({ variant: "ghost" }), "hidden sm:inline-flex")}>
             Log in

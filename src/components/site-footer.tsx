@@ -27,7 +27,7 @@ export function SiteFooter() {
         <p>
           © {new Date().getFullYear()} {site.name}. All rights reserved.
         </p>
-        <ul className="flex gap-4">
+        <ul className="flex flex-wrap items-center gap-4">
           {site.social.map((link) => (
             <li key={link.href}>
               <a href={link.href} target="_blank" rel="noopener noreferrer" className="rounded-sm hover:text-foreground">
@@ -35,6 +35,12 @@ export function SiteFooter() {
               </a>
             </li>
           ))}
+          <li>
+            <a href="#main" className="group flex items-center gap-1 rounded-sm font-medium text-foreground">
+              Back to top
+              <span aria-hidden className="transition-transform group-hover:-translate-y-0.5">↑</span>
+            </a>
+          </li>
         </ul>
       </div>
     </footer>

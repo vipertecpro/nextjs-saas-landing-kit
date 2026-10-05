@@ -1,9 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { AnnouncementBar } from "@/components/sections/announcement-bar";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { MotionProvider } from "@/components/motion/motion-provider";
+import { ThemePicker } from "@/components/theme-picker";
 import { ThemeProvider } from "@/components/theme-provider";
 import { site } from "@/config/site";
+import { getSection } from "@/lib/api";
 import "./globals.css";
 
 const sans = Geist({ variable: "--font-sans", subsets: ["latin"] });
@@ -25,19 +29,25 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const announcement = await getSection("announcement");
+
   return (
-    <html lang="en" suppressHydrationWarning className={`${sans.variable} ${mono.variable} h-full antialiased`}>
+    <html lang="en" data-theme={site.theme} suppressHydrationWarning className={`${sans.variable} ${mono.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
         <ThemeProvider>
+          <MotionProvider>
           <a href="#main" className="sr-only z-50 rounded-md bg-background px-3 py-2 focus:not-sr-only focus:fixed focus:top-3 focus:left-3">
             Skip to content
           </a>
+          <AnnouncementBar content={announcement} />
           <SiteHeader />
           <main id="main" className="flex-1">
             {children}
           </main>
           <SiteFooter />
+          {process.env.NEXT_PUBLIC_DEMO_MODE === "true" && <ThemePicker />}
+          </MotionProvider>
         </ThemeProvider>
       </body>
     </html>

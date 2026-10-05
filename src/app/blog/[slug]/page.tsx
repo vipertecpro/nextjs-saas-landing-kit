@@ -2,14 +2,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { site } from "@/config/site";
-import { findPost, formatPostDate, posts } from "@/content/posts";
+import { PostBody } from "@/components/post-body";
+import { getPost, getPosts } from "@/lib/api";
+import { formatDate } from "@/lib/format";
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const posts = await getPosts();
+
   return posts.map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): Promise<Metadata> {
-  const post = findPost((await params).slug);
+  const post = await getPost((await params).slug);
 
   if (!post) {
     return {};
@@ -24,7 +28,7 @@ export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): P
 }
 
 export default async function BlogPost({ params }: PageProps<"/blog/[slug]">) {
-  const post = findPost((await params).slug);
+  const post = await getPost((await params).slug);
 
   if (!post) {
     notFound();
@@ -50,10 +54,10 @@ export default async function BlogPost({ params }: PageProps<"/blog/[slug]">) {
           <h1 className="font-heading text-4xl font-semibold tracking-tight text-balance sm:text-5xl">{post.title}</h1>
           <p className="text-lg text-muted-foreground">{post.description}</p>
           <p className="text-sm text-muted-foreground">
-            {post.author} · <time dateTime={post.date}>{formatPostDate(post.date)}</time> · {post.readingMinutes} min read
+            {post.author} · <time dateTime={post.date}>{formatDate(post.date)}</time> · {post.readingMinutes} min read
           </p>
         </header>
-        <div className="prose-page">{post.body}</div>
+        <PostBody blocks={post.body} />
       </div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
     </article>

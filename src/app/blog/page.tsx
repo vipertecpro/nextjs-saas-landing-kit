@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SectionHeading } from "@/components/section-heading";
-import { formatPostDate, posts } from "@/content/posts";
+import { getPosts } from "@/lib/api";
+import { formatDate } from "@/lib/format";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -9,19 +10,19 @@ export const metadata: Metadata = {
   alternates: { canonical: "/blog" },
 };
 
-export default function BlogIndex() {
-  const sorted = [...posts].sort((a, b) => b.date.localeCompare(a.date));
+export default async function BlogIndex() {
+  const posts = await getPosts();
 
   return (
     <section className="py-20">
       <div className="container-page flex flex-col gap-12">
         <SectionHeading as="h1" eyebrow="Blog" title="Notes on shipping better products" subtitle="Practical ideas from our team and customers." />
         <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {sorted.map((post) => (
+          {posts.map((post) => (
             <li key={post.slug}>
               <article className="group relative flex h-full flex-col gap-3 rounded-2xl border bg-card p-6 transition-colors hover:border-primary/40">
                 <p className="text-sm text-muted-foreground">
-                  <time dateTime={post.date}>{formatPostDate(post.date)}</time> · {post.readingMinutes} min read
+                  <time dateTime={post.date}>{formatDate(post.date)}</time> · {post.readingMinutes} min read
                 </p>
                 <h2 className="text-lg font-semibold text-balance">
                   <Link href={`/blog/${post.slug}`} className="after:absolute after:inset-0 after:rounded-2xl">

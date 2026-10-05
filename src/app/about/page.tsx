@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Cta } from "@/components/sections/cta";
-import { Stats } from "@/components/sections/stats";
+import { SectionBlock } from "@/components/section-block";
 import { SectionHeading } from "@/components/section-heading";
 import { site } from "@/config/site";
 
@@ -11,9 +10,9 @@ export const metadata: Metadata = {
 };
 
 const values = [
-  { title: "Calm over busy", description: "Tools should reduce noise. Every feature has to earn its place." },
-  { title: "Ship small, ship often", description: "We release every week, and we build for teams who want to do the same." },
-  { title: "Customers in the room", description: "Every roadmap decision starts with what customers told us." },
+  { title: "Show the working", description: "Every answer links to the query behind it. Trust comes from transparency." },
+  { title: "Your data stays yours", description: "Read-only access, encryption everywhere, and never any training on your data." },
+  { title: "Fast is a feature", description: "An answer in seconds changes how a team works. We obsess over speed." },
 ];
 
 export default function AboutPage() {
@@ -24,8 +23,8 @@ export default function AboutPage() {
           <SectionHeading
             as="h1"
             eyebrow="About"
-            title={`We started ${site.name} to make shipping feel calm again`}
-            subtitle="After years of juggling spreadsheets, feedback inboxes and changelog docs, we built the tool we wanted: one place to plan, build and share what's next."
+            title={`We started ${site.name} so everyone can ask the data`}
+            subtitle="We spent years as the people every question went through. Aurora is the analyst we wished our teams had: fast, honest about how it got the answer, and never too busy."
           />
           <ul className="grid gap-6 md:grid-cols-3">
             {values.map((value) => (
@@ -37,8 +36,8 @@ export default function AboutPage() {
           </ul>
         </div>
       </section>
-      <Stats />
-      <Cta />
+      <SectionBlock id="stats" />
+      <SectionBlock id="cta" />
     </>
   );
 }

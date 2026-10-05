@@ -3,27 +3,33 @@
  * sitemap and share images say about the product comes from here.
  */
 export const site = {
-  name: "Launchpad",
-  tagline: "Ship your SaaS landing page this afternoon",
+  name: "Aurora",
+  tagline: "Ask your data anything",
   description:
-    "Launchpad helps small teams plan, build and ship product updates faster, with roadmaps, feedback and release notes in one calm workspace.",
+    "Aurora is an AI analyst that connects to your data and answers questions in plain English, with charts, in seconds.",
+  // The colour theme: "aurora" (violet), "ocean" (cyan) or "ember" (orange).
+  // Themes live in src/app/globals.css.
+  theme: "aurora" as "aurora" | "ocean" | "ember",
   // Used for canonical URLs, the sitemap and share images. No trailing slash.
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   email: "hello@example.com",
-  twitter: "@launchpad",
+  twitter: "@aurora",
   nav: [
     { label: "Features", href: "/#features" },
     { label: "Pricing", href: "/pricing" },
+    { label: "Compare", href: "/compare" },
+    { label: "Changelog", href: "/changelog" },
     { label: "Blog", href: "/blog" },
-    { label: "About", href: "/about" },
   ],
-  cta: { label: "Start free trial", href: "/signup" },
+  cta: { label: "Join the waitlist", href: "/waitlist" },
   footer: [
     {
       heading: "Product",
       links: [
         { label: "Features", href: "/#features" },
         { label: "Pricing", href: "/pricing" },
+        { label: "Compare", href: "/compare" },
+        { label: "Changelog", href: "/changelog" },
         { label: "FAQ", href: "/#faq" },
       ],
     },
@@ -32,6 +38,7 @@ export const site = {
       links: [
         { label: "About", href: "/about" },
         { label: "Blog", href: "/blog" },
+        { label: "Waitlist", href: "/waitlist" },
         { label: "Contact", href: "/contact" },
       ],
     },

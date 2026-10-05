@@ -1,12 +1,14 @@
+import { Reveal } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { faqs } from "@/content/landing";
+import type { FaqContent } from "@/data/types";
 
 /**
  * Questions and answers. They are also published as FAQ structured data, so
  * search engines can show them directly in results.
  */
-export function Faq() {
+export function Faq({ content }: { content: FaqContent }) {
+  const faqs = content.items;
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -20,7 +22,9 @@ export function Faq() {
   return (
     <section id="faq" className="scroll-mt-20 py-24">
       <div className="container-page flex max-w-3xl flex-col gap-10">
-        <SectionHeading eyebrow="FAQ" title="Questions, answered" />
+        <Reveal>
+          <SectionHeading eyebrow={content.eyebrow} title={content.title} highlight={content.highlight} subtitle={content.subtitle} />
+        </Reveal>
         <Accordion className="rounded-2xl border bg-card px-6">
           {faqs.map((faq) => (
             <AccordionItem key={faq.question} value={faq.question}>
