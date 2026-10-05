@@ -55,9 +55,12 @@ function PlanCard({ plan, yearly }: { plan: Plan; yearly: boolean }) {
   const price = yearly ? plan.yearly : plan.monthly;
   const card = (
     <div className="relative flex h-full flex-col gap-6 rounded-2xl bg-card p-6">
-      {plan.highlighted && <Badge className="absolute -top-3 left-6 rounded-full">Most popular</Badge>}
       <div className="flex flex-col gap-2">
-        <h3 className="text-lg font-semibold">{plan.name}</h3>
+        <h3 className="flex items-center justify-between gap-3 text-lg font-semibold">
+          {plan.name}
+          {/* Inside the card: the highlighted card's moving border clips anything outside it. */}
+          {plan.highlighted && <Badge className="rounded-full">Most popular</Badge>}
+        </h3>
         <p className="text-sm text-muted-foreground">{plan.description}</p>
       </div>
       <p className="flex items-baseline gap-1">
