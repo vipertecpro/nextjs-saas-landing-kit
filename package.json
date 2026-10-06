@@ -62,16 +62,6 @@
     "typescript": "^5"
   },
   "marketplace": {
-    "icon": "marketplace/icon.png",
-    "screenshots": [
-      "marketplace/01-hero.jpg",
-      "marketplace/02-3d-dive.jpg",
-      "marketplace/03-stacking-layers.jpg",
-      "marketplace/04-3d-chart.jpg",
-      "marketplace/05-3d-globe.jpg",
-      "marketplace/06-product-tour.jpg",
-      "marketplace/08-pricing.jpg",
-      "marketplace/10-mobile-hero.jpg"
-    ]
+    "icon": "marketplace/icon.png"
   }
 }
