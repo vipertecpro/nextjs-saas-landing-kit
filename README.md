@@ -2,7 +2,7 @@
 
 A complete marketing site for an AI product: 32 ready-made sections including 3D (a particle-wave hero, an interactive globe, a 3D chart and a scroll-driven 3D dive), a live AI demo,
 pricing with a usage calculator, blog, changelog, comparison, waitlist with referrals, and auth pages. Every page loads its content from a typed
-API, so you can switch from the built-in dummy data to your own backend by setting one variable.
+API, so you can switch from the built-in sample data to your own backend by setting one variable.
 
 Next.js 16 · React 19 · TypeScript · Tailwind CSS 4 · shadcn/ui · React Three Fiber · Motion
 
@@ -31,7 +31,7 @@ Open http://localhost:3000, and http://localhost:3000/components to see every se
 
 ## Data and API
 
-The dummy data is served as JSON by the routes in `src/app/api`:
+The sample data is served as JSON by the routes in `src/app/api`:
 
 | Route | Returns |
 | --- | --- |
