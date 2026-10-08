@@ -66,6 +66,28 @@ Copy the archive to any server with Node.js 20.9+, unpack it, and run `node serv
 
 It also deploys to Vercel, Netlify or any host that supports Next.js, with no changes.
 
+## What you can build
+
+The AI SaaS Launch Kit is a building block: the sections, the pages, the 3D scenes, the typed content API and the packaged build are done, and the product around them is yours. These ideas sit comfortably inside platform and advertising rules as long as everything on the page is true. The sample copy, numbers, logos and testimonials are placeholders; replace them with real ones before you publish, and never ship made-up reviews or invented customers.
+
+**AI and developer products**
+
+- **A launch site for an AI assistant or agent.** Use the hero, features, use-cases and pricing sections, and turn the prompt playground into a guided tour of real example questions. It plays back the answers you write; a live model behind it is your own backend.
+- **A site for an API or developer tool.** The code tabs, integration hub, status board and changelog cover docs-style marketing, and `API_URL` points the pages at your own content service.
+- **A pre-launch waitlist.** The waitlist page and referral section collect sign-ups; the forms forward each submission to a webhook you set in `.env`, such as your CRM or a form service. Collect only what you need and say what you do with it.
+
+**Agencies and studios**
+
+- **Landing pages for clients.** One licence covers unlimited projects, including client work. Change the name, theme (`aurora`, `ocean` or `ember`) and home-page section order in `src/config`, and hand the client a packaged build.
+- **Productised-service sites.** Pricing with a usage calculator, a comparison table and a contact form for a consultancy or an automation shop.
+
+**Products beyond AI**
+
+- **Any SaaS marketing site.** The sections are generic enough for analytics, scheduling, finance or education tools. Swap the copy in `src/data/sections.ts` and remove sections you do not need.
+- **A public roadmap and changelog.** The roadmap votes and release notes keep early users in the loop. The sample vote route keeps nothing between restarts, so storing votes durably needs your own backend.
+
+The login, signup and forgot-password pages are screens only; real accounts, sessions and billing need your own backend or an auth provider. Add a cookie banner and privacy policy where the law requires them, and use this site's pricing and claims only for what your product really does.
+
 ## Licence
 
 Commercial licence: one developer, unlimited projects, including client and commercial work. You may not resell or share the source code.
