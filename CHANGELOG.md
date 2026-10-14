@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.1.0] - 2026-10-15
+
+- Now free and open source under the MIT licence.
+
 ## [2.0.2] - 2026-10-05
 
 - The motion switch in the header can now play animations on devices set to reduce motion, as well as pause them; the choice is remembered.

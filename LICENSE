@@ -1,111 +1,21 @@
-vipertecpro Commercial Licence
+MIT License
 
-Copyright (c) 2026 Vipul Walia (vipertecpro). All rights reserved.
+Copyright (c) 2026 Vipul Walia
 
-Product: vipertecpro/nextjs-saas-landing-kit ("AI SaaS Launch Kit for Next.js")
-Store:   https://vipertecpro.com/products/nextjs-saas-landing-kit
-Terms:   https://vipertecpro.com/legal/licence
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-This is the Commercial Licence that applies to every paid product sold on
-vipertecpro.com, reproduced here so it travels with the code. In short: one
-developer, as many projects as you like, including client and commercial work,
-but the source code stays private.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-If the text in this file and the Commercial Licence published at
-https://vipertecpro.com/legal/licence on the date of your purchase ever differ,
-the published licence applies. Later changes to the published licence do not
-take away rights you already have.
-
-
-1. Who is who
-
-   The product is made and owned by Vipul Walia ("the author", "I"). "You" are
-   the person who bought the licence, or the organisation they bought it for.
-   "The product" means the source code, assets, documentation and every update
-   you receive for it.
-
-   You only have a licence if you bought one on vipertecpro.com, or I gave you
-   one in writing. Having a copy of the product, from anywhere, gives you no
-   rights by itself.
-
-
-2. What you may do
-
-   When your payment is complete, I give you a worldwide, non-exclusive,
-   non-transferable, perpetual licence for one developer to:
-
-   a. use the product in an unlimited number of projects, including commercial
-      projects and work for clients or an employer;
-   b. change the source code to suit those projects;
-   c. ship compiled or bundled apps built with the product, such as iOS,
-      Android or desktop apps, to any number of end users;
-   d. keep the product in private repositories that only the people working
-      on those projects can access.
-
-
-3. Teams
-
-   Each licence covers one developer who works with the product's source code.
-   If several developers on a team work with it, each needs their own licence.
-   People who only use the finished app, such as clients, testers or end
-   users, don't need one. Get in touch for team pricing.
-
-
-4. What you may not do
-
-   a. Resell, sublicense, share, give away or otherwise redistribute the
-      product's source code, changed or unchanged.
-   b. Publish the source code anywhere others can get it, such as a public
-      repository, package registry or download site.
-   c. Use the product to build a competing product, such as a plugin, package,
-      template or starter kit that does the same job and is offered to other
-      developers.
-   d. Share your marketplace access keys or account, or use them to give
-      others access to the product.
-   e. Remove copyright or licence notices from the source code.
-
-   Shipping the product inside a compiled app under section 2c is not
-   redistribution of the source code.
-
-
-5. Updates and support
-
-   Your licence includes every update I release for the product for as long as
-   I maintain it, delivered as a download from your dashboard on
-   vipertecpro.com. Support is by email, on a best-effort basis, for
-   installation questions and reproducible bugs. It doesn't include custom
-   development.
-
-
-6. Ownership
-
-   The product is licensed, not sold. I keep all copyright and other rights in
-   it. Changes you make to the source code are yours, but they remain covered
-   by this licence when combined with the product.
-
-
-7. Ending the licence
-
-   Your licence lasts forever unless you break these terms. If you do, it ends
-   automatically and you must stop using and delete the product. Apps you
-   shipped to end users before then may keep working. If a payment is refunded
-   or charged back, the licence for that purchase ends too; the Refund Policy
-   at https://vipertecpro.com/legal/refunds explains refunds.
-
-
-8. Warranty and liability
-
-   THE PRODUCT IS PROVIDED "AS IS", WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR
-   IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-   NON-INFRINGEMENT, TO THE EXTENT THE LAW ALLOWS. I am not liable for indirect
-   or consequential losses such as lost profits or data, and my total liability
-   for any claim is limited to the amount you paid for the product.
-
-
-9. Everything else
-
-   This licence works alongside the Terms of Service at
-   https://vipertecpro.com/legal/terms, which also cover governing law. If a
-   part of this licence can't be enforced, the rest still applies. Questions,
-   or need different terms, such as a team or enterprise licence? Email
-   vipertecpro@gmail.com.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

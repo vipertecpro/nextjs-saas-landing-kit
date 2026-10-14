@@ -1,9 +1,9 @@
 {
   "name": "nextjs-saas-landing-kit",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "private": true,
   "description": "AI SaaS Launch Kit for Next.js 16: 32 sections including 3D, a live AI demo, typed API with sample data, blog, pricing, waitlist and auth pages. Tailwind CSS, shadcn/ui, React Three Fiber.",
-  "license": "Commercial",
+  "license": "MIT",
   "author": "Vipul Walia <vipertecpro@gmail.com> (https://vipertecpro.com)",
   "homepage": "https://vipertecpro.com/products/nextjs-saas-landing-kit",
   "keywords": [

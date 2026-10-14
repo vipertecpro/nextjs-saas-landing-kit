@@ -78,7 +78,7 @@ The AI SaaS Launch Kit is a building block: the sections, the pages, the 3D scen
 
 **Agencies and studios**
 
-- **Landing pages for clients.** One licence covers unlimited projects, including client work. Change the name, theme (`aurora`, `ocean` or `ember`) and home-page section order in `src/config`, and hand the client a packaged build.
+- **Landing pages for clients.** The MIT licence allows client and commercial work, for as many projects as you like. Change the name, theme (`aurora`, `ocean` or `ember`) and home-page section order in `src/config`, and hand the client a packaged build.
 - **Productised-service sites.** Pricing with a usage calculator, a comparison table and a contact form for a consultancy or an automation shop.
 
 **Products beyond AI**
@@ -90,7 +90,7 @@ The login, signup and forgot-password pages are screens only; real accounts, ses
 
 ## Licence
 
-Commercial licence: one developer, unlimited projects, including client and commercial work. You may not resell or share the source code.
-See [LICENSE](LICENSE) or https://vipertecpro.com/legal/licence.
+MIT: use, change and share it for anything, including client and commercial work, as long as the copyright and licence notice stay
+with all copies or substantial portions of it. It comes as is, without warranty; the full text is in the `LICENSE` file.
 
 Support: vipertecpro@gmail.com
